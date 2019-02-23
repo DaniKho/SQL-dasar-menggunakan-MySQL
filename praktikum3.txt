@@ -1,0 +1,181 @@
+Enter password: ***
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 12
+Server version: 5.5.51 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use mahasiswa;
+Database changed
+mysql> select * from data;
++----------+---------------+--------------+----------+----------+-------+---------------+---------------+------------+
+| NIM      | Nama          | AlamatJalan  | Kota     | KodePos  | noHP  | JenisKelamin  | TanggalLahir  | KodeDosen  |
++----------+---------------+--------------+----------+----------+-------+---------------+---------------+------------+
+| 11223344 | Ari Santoso   |              | Bekasi   |          |       | Laki-Laki     | 1998-10-12    |            |
+| 11223345 | Ario Talib    |              | Cikarang |          |       | Laki-Laki     | 1999-11-16    |            |
+| 11223346 | Dina Marlina  |              | Karawang |          |       | Perempuan     | 1997-12-01    |            |
+| 11223347 | Lisa Ayu      |              | Bekasi   |          |       | Perempuan     | 1996-01-02    |            |
+| 11223348 | Tiara Wahidah |              | Bekasi   |          |       | Perempuan     | 1980-02-05    |            |
+| 11223349 | Anton Sinaga  |              | Cikarang |          |       | Laki-Laki     | 1988-03-10    |            |
++----------+---------------+--------------+----------+----------+-------+---------------+---------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> update data
+    -> set AlamatJalan="Jl Cempaka", KodePos="5234", noHP="02123456789", KodeDosen="D1122"
+	-> where NIM="11223344";
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1 Changed: 1 Warnings: 0
+
+mysql> update data
+    -> set AlamatJalan="Jl Mawar", KodePos="5222", noHP="02123456788", KodeDosen="D1123"
+	-> where NIM="11223345";	
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1 Changed: 1 Warnings: 0
+
+mysql> update data
+    -> set AlamatJalan="Jl Patriot", KodePos="4231", noHP="02134567892", KodeDosen="D1124"
+	-> where NIM="11223346";
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1 Changed: 1 Warnings: 0
+
+mysql> update data
+    -> set AlamatJalan="Jl Bougenvile", KodePos="5242", noHP="02144567892", KodeDosen="D1125"
+	-> where NIM="11223347";
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1 Changed: 1 Warnings: 0
+
+mysql> update data
+    -> set AlamatJalan="Jl Tulip", KodePos="5223", noHP="02142356789", KodeDosen="D1126"
+	-> where NIM="11223348";
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1 Changed: 1 Warnings: 0
+
+mysql> update data
+    -> set AlamatJalan="Jl Kantil", KodePos="5221", noHP="02198765432", KodeDosen="D1127"
+	-> where NIM="11223349";
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1 Changed: 1 Warnings: 0
+
+mysql> select * from data;
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+| NIM      | Nama          | AlamatJalan   | Kota     | KodePos | noHP        | JenisKelamin | TanggalLahir | KodeDosen |
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+| 11223344 | Ari Santoso   | Jl Cempaka    | Bekasi   | 5234    | 02123456789 | Laki-Laki    | 1979-08-03   | D1122     |
+| 11223345 | Ario Talib    | Jl Mawar      | Cikarang | 5222    | 02123456788 | Laki-Laki    | 1999-11-16   | D1123     |
+| 11223346 | Dina Marlina  | Jl Patriot    | Karawang | 4231    | 02134567892 | Perempuan    | 1997-12-01   | D1124     |
+| 11223347 | Lisa Ayu      | Jl Bougenvile | Bekasi   | 5242    | 02144567892 | Perempuan    | 1996-01-02   | D1125     |
+| 11223348 | Tiara Wahidah | Jl Tulip      | Bekasi   | 5223    | 02142356789 | Perempuan    | 1980-02-05   | D1126     |
+| 11223349 | Anton Sinaga  | Jl Kantil     | Cikarang | 5221    | 02198765432 | Laki-Laki    | 1988-03-10   | D1127     |
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> update data
+    -> set TanggalLahir = "1979-08-31"
+	-> where nim = "11223344";
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> select * from data
+    -> where where Nama="Ari Santoso";
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+| NIM      | Nama          | AlamatJalan   | Kota     | KodePos | noHP        | JenisKelamin | TanggalLahir | KodeDosen |
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+| 11223344 | Ari Santoso   | Jl Cempaka    | Bekasi   | 5234    | 02123456789 | Laki-Laki    | 1979-08-03   | D1122     |
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+1 row in set (0.00 sec)
+
+mysql> delete from data where nim = "11223346";
+Query OK, 1 row affected (0.09 sec)
+
+mysql> select * from data;
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+| NIM      | Nama          | AlamatJalan   | Kota     | KodePos | noHP        | JenisKelamin | TanggalLahir | KodeDosen |
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+| 11223344 | Ari Santoso   | Jl Cempaka    | Bekasi   | 5234    | 02123456789 | Laki-Laki    | 1979-08-03   | D1122     |
+| 11223345 | Ario Talib    | Jl Mawar      | Cikarang | 5222    | 02123456788 | Laki-Laki    | 1999-11-16   | D1123     |
+| 11223347 | Lisa Ayu      | Jl Bougenvile | Bekasi   | 5242    | 02144567892 | Perempuan    | 1996-01-02   | D1125     |
+| 11223348 | Tiara Wahidah | Jl Tulip      | Bekasi   | 5223    | 02142356789 | Perempuan    | 1980-02-05   | D1126     |
+| 11223349 | Anton Sinaga  | Jl Kantil     | Cikarang | 5221    | 02198765432 | Laki-Laki    | 1988-03-10   | D1127     |
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from data
+    -> where TanggalLahir>= "1996-01-02";
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+| NIM      | Nama          | AlamatJalan   | Kota     | KodePos | noHP        | JenisKelamin | TanggalLahir | KodeDosen |
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+| 11223345 | Ario Talib    | Jl Mawar      | Cikarang | 5222    | 02123456788 | Laki-Laki    | 1999-11-16   | D1123     |
+| 11223347 | Lisa Ayu      | Jl Bougenvile | Bekasi   | 5242    | 02144567892 | Perempuan    | 1996-01-02   | D1125     |
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from data
+    -> where Kota="Bekasi"
+    -> and JenisKelamin="Perempuan";
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+| NIM      | Nama          | AlamatJalan   | Kota     | KodePos | noHP        | JenisKelamin | TanggalLahir | KodeDosen |
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+| 11223347 | Lisa Ayu      | Jl Bougenvile | Bekasi   | 5242    | 02144567892 | Perempuan    | 1996-01-02   | D1125     |
+| 11223348 | Tiara Wahidah | Jl Tulip      | Bekasi   | 5223    | 02142356789 | Perempuan    | 1980-02-05   | D1126     |
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from data
+    -> where Kota="Bekasi"
+    -> and JenisKelamin="Laki-Laki"
+    -> or TanggalLahir<="1997-12-31"
+	-> and JenisKelamin="Perempuan";
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+| NIM      | Nama          | AlamatJalan   | Kota     | KodePos | noHP        | JenisKelamin | TanggalLahir | KodeDosen |
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+| 11223344 | Ari Santoso   | Jl Cempaka    | Bekasi   | 5234    | 02123456789 | Laki-Laki    | 1979-08-03   | D1122     |
+| 11223347 | Lisa Ayu      | Jl Bougenvile | Bekasi   | 5242    | 02144567892 | Perempuan    | 1996-01-02   | D1125     |
+| 11223348 | Tiara Wahidah | Jl Tulip      | Bekasi   | 5223    | 02142356789 | Perempuan    | 1980-02-05   | D1126     |
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select Nama, AlamatJalan,Kota from data;
++---------------+---------------+----------+
+| Nama          | AlamatJalan   | Kota     |
++---------------+---------------+----------+
+| Ari Santoso   | Jl Cempaka    | Bekasi   |
+| Ario Talib    | Jl Mawar      | Cikarang |
+| Lisa Ayu      | Jl Bougenvile | Bekasi   |
+| Tiara Wahidah | Jl Tulip      | Bekasi   |
+| Anton Sinaga  | Jl Kantil     | Cikarang |
++---------------+---------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from data
+    -> order by Nama;
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+| NIM      | Nama          | AlamatJalan   | Kota     | KodePos | noHP        | JenisKelamin | TanggalLahir | KodeDosen |
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+| 11223349 | Anton Sinaga  | Jl Kantil     | Cikarang | 5221    | 02198765432 | Laki-Laki    | 1988-03-10   | D1127     |
+| 11223344 | Ari Santoso   | Jl Cempaka    | Bekasi   | 5234    | 02123456789 | Laki-Laki    | 1979-08-03   | D1122     |
+| 11223345 | Ario Talib    | Jl Mawar      | Cikarang | 5222    | 02123456788 | Laki-Laki    | 1999-11-16   | D1123     |
+| 11223347 | Lisa Ayu      | Jl Bougenvile | Bekasi   | 5242    | 02144567892 | Perempuan    | 1996-01-02   | D1125     |
+| 11223348 | Tiara Wahidah | Jl Tulip      | Bekasi   | 5223    | 02142356789 | Perempuan    | 1980-02-05   | D1126     |
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from data
+    -> order by Nama desc;
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+| NIM      | Nama          | AlamatJalan   | Kota     | KodePos | noHP        | JenisKelamin | TanggalLahir | KodeDosen |
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+| 11223348 | Tiara Wahidah | Jl Tulip      | Bekasi   | 5223    | 02142356789 | Perempuan    | 1980-02-05   | D1126     |
+| 11223347 | Lisa Ayu      | Jl Bougenvile | Bekasi   | 5242    | 02144567892 | Perempuan    | 1996-01-02   | D1125     |
+| 11223345 | Ario Talib    | Jl Mawar      | Cikarang | 5222    | 02123456788 | Laki-Laki    | 1999-11-16   | D1123     |
+| 11223344 | Ari Santoso   | Jl Cempaka    | Bekasi   | 5234    | 02123456789 | Laki-Laki    | 1979-08-03   | D1122     |
+| 11223349 | Anton Sinaga  | Jl Kantil     | Cikarang | 5221    | 02198765432 | Laki-Laki    | 1988-03-10   | D1127     |
++----------+---------------+---------------+----------+---------+-------------+--------------+--------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql>
